@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- bootstrap styling -->
+    <link rel="stylesheet" href="{% static 'student/css/bootstrap.min.css' %}">
+    <!-- fontawesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>sms |
+        {% if title %}
+            {{ title }}
+        {% endif %}   
+    </title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    
+    <!-- navbar -->
+    {% include 'navbar.html' %}
+
+    
+    {% block content %}
+        
+    {% endblock content %}
+        
+
+
+
+    <div class="container text-center bg-dark p-2" 
+        style="position:fixed; bottom: 0;">
+        <footer>
+            <p>
+                Copyright 
+                <i class="fa-solid fa-copyright"></i> 
+                {% now 'Y' %} : alex njuguna
+            </p>
+        </footer>
+    </div>
+    
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
+        crossorigin="anonymous">
+    </script>
+</body>
+</html>
