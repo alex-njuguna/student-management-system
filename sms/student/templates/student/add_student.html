@@ -1,0 +1,35 @@
+{% extends 'student/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+        
+    <h3 class="text-center text-primary mt-4">Add a new student</h3>
+
+    <div class="container-sm mt-2 p-3" style="max-width: 700px;">
+        <div class="card text-white bg-dark">
+            <div class="card-body">
+                <form action="{% url 'student:add_student' %}" method="post" autocomplete="off">
+                    {% csrf_token %}
+            
+                    {{ form|crispy }}
+            
+                    <div class=" container btn-group mt-5">
+                        <button type="submit" class="btn btn-primary float-left">
+                            Add &nbsp; <i class="fa-solid fa-plus fa-lg"></i>
+                        </button>
+            
+                        <a href="{% url 'student:home' %}" class="btn btn-secondary float-right">
+                            Cancel &nbsp; <i class="fa-regular fa-rectangle-xmark fa-lg"></i>
+                        </a>
+                    </div>
+            
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}
+    

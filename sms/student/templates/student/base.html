@@ -23,22 +23,28 @@
 
     
     {% block content %}
+
+        {% if messages %}
+            {% for message in messages %}
+                <h5 class="alert alert-{{ messages.tags }}">{{ message }}</h5>
+            {% endfor %}
+        {% endif %}
+            
         
     {% endblock content %}
         
 
-
-
-    <div class="container text-center bg-dark p-2" 
-        style="position:fixed; bottom: 0;">
-        <footer>
-            <p>
-                Copyright 
-                <i class="fa-solid fa-copyright"></i> 
-                {% now 'Y' %} : alex njuguna
-            </p>
-        </footer>
+    <div class="text-center bg-dark p-2" 
+        style="position:fixed; bottom: 0; width: 100%;">
+            <footer>
+                <p>
+                    Copyright 
+                    <i class="fa-solid fa-copyright"></i> 
+                    {% now 'Y' %} : alex njuguna
+                </p>
+            </footer>
     </div>
+   
     
 
 
