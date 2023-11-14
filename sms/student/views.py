@@ -59,6 +59,14 @@ def update_student(request, id):
     })
 
 
+def delete_student(request, id):
 
+    student = get_object_or_404(Student, pk=id)
+
+    student.delete()
+
+    messages.info(request, "Student deleted!!")
+
+    return redirect("student:home")
 
 
