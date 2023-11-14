@@ -1,12 +1,23 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Student
 from .forms import AddStudentForm, UpdateStudentForm
 
 # display all students
 def home(request):
-    students = Student.objects.all()
+    students_list = Student.objects.all().order_by("course")
+    paginator = Paginator(students_list, 2)
+
+    page = request.GET.get("page", 1)
+
+    try:
+        students = paginator.page(page)
+    except PageNotAnInteger:
+        students = paginator.page(1)
+    except EmptyPage:
+        students = paginator.page(paginator.num_pages)
 
     return render(request, "student/home.html", {
         "students": students,
@@ -55,7 +66,8 @@ def update_student(request, id):
     form = UpdateStudentForm(instance=student)
 
     return render(request, "student/update_student.html", {
-        "form":  form
+        "form":  form,
+        "title": "update_student"
     })
 
 
