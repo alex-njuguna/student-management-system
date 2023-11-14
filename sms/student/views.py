@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 
 from .models import Student
-from .forms import AddStudentForm
+from .forms import AddStudentForm, UpdateStudentForm
 
 # display all students
 def home(request):
@@ -36,3 +36,29 @@ def add_student(request):
         "form": form,
         "title": "add-student",
     })
+
+
+# update student
+def update_student(request, id):
+
+    student = get_object_or_404(Student, pk=id)
+
+    if request.method == "POST":
+        form = UpdateStudentForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Student details updated")
+            return redirect("student:home")
+        else:
+            messages.error(request, "Confirm all details are as they should be")
+        
+    form = UpdateStudentForm(instance=student)
+
+    return render(request, "student/update_student.html", {
+        "form":  form
+    })
+
+
+
+
+
