@@ -37,10 +37,6 @@
                                 </button>&nbsp;
                                 <a href="{% url 'student:update_student' student.id %}" class="btn btn-success">
                                     <i class="fa-solid fa-pen-to-square"></i>
-                                </a>&nbsp;
-                                <a href="" class="btn btn-danger">
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
                             </td>
                         </tr>
 
@@ -54,18 +50,24 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-
-                                <ul class="list-unstyled">
-                                    <li><strong>registration number: </strong>{{ student.reg_no }}</li>
-                                    <li><strong>first name: </strong>{{ student.first_name }}</li>
-                                    <li><strong>last name: </strong>{{ student.last_name }}</li>
-                                    <li><strong>email: </strong>{{ student.email }}</li>
-                                    <li><strong>course: </strong>{{ student.course }}</li>
-                                    <li><strong>gpa: </strong>{{ student.gpa }}</li>
-                                </ul>
-
+                                
+                                <div class="card bg-light">
+                                    <div class="card-body text-center text-dark">
+                                        <ul class="list-unstyled">
+                                            <li><strong>registration number: </strong>{{ student.reg_no }}</li>
+                                            <li><strong>first name: </strong>{{ student.first_name }}</li>
+                                            <li><strong>last name: </strong>{{ student.last_name }}</li>
+                                            <li><strong>email: </strong>{{ student.email }}</li>
+                                            <li><strong>course: </strong>{{ student.course }}</li>
+                                            <li><strong>gpa: </strong>{{ student.gpa }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
                                 </div>
                                 <div class="modal-footer">
+                                <a href="{% url 'student:delete_student' student.id %}" class="btn btn-danger">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
                                 </div>
