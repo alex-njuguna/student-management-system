@@ -41,7 +41,7 @@ def add_student(request):
 # update student
 def update_student(request, id):
 
-    student = get_object_or_404(Student, pk=id)
+    student = get_object_or_404(Student, id=id)
 
     if request.method == "POST":
         form = UpdateStudentForm(request.POST, instance=student)
