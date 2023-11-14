@@ -5,7 +5,7 @@
 {% block content %}
 
         
-    <h3 class="text-center text-primary mt-4">Add a new student</h3>
+    <h3 class="text-center text-primary mt-4">Update student</h3>
 
     <div class="container-sm mt-2 p-3" style="max-width: 700px;">
         <div class="card text-white bg-dark">
@@ -16,8 +16,8 @@
                     {{ form|crispy }}
             
                     <div class=" container btn-group mt-5">
-                        <a href="{% url 'student:add_student' %}" class="btn btn-primary float-left">
-                            Add &nbsp; <i class="fa-solid fa-plus fa-lg"></i>
+                        <a href="{% url 'student:update_student' student.id %}" class="btn btn-primary float-left">
+                            Save &nbsp; <i class="fa-solid fa-pen-nib fa-lg"></i>
                         </a>
             
                         <a href="{% url 'student:home' %}" class="btn btn-secondary float-right">
